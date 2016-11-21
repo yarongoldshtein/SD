@@ -9,14 +9,14 @@ package a;
  *
  * @author yaron
  */
-public class A {
+public class asd {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("helo wolrd");
+        System.out.println("hello wolrd");
     }
     
 }
