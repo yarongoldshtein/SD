@@ -17,6 +17,8 @@ public class asd {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("hello wolrd");
+        int y= 0; 
+        System.out.println(y);
     }
     
 }
