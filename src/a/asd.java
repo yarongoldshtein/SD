@@ -20,6 +20,7 @@ public class asd {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+<<<<<<< HEAD
         
         String path="C:\\Users\\asus\\Desktop\\לימודים\\שנה ג\\מבנה תוכנה\\Ex1\\G0.txt";
         try { 
@@ -33,6 +34,11 @@ public class asd {
         }
         
         
+=======
+        System.out.println("hello wolrd");
+        int y= 0; 
+        System.out.println(y);
+>>>>>>> 89beaee23b773184bdce6b6ace1cb0ecd91b318c
     }
     
 }
