@@ -12,18 +12,20 @@ package a;
 import java.util.*;
 import java.io.*;
 
-public class Dijkstra {
+public class Graph_algo {
+
     /*
-     Dijkstra's Shortest Path Algorithm
+     Graph_algo's Shortest Path Algorithm
      The following program gives the shortest path from the source to all other nodes
      */
 
     private double[][] djMatrix;
     private int numVerts, numEdges;
     private double INFINITY = Double.POSITIVE_INFINITY;
+    private double[] dijkstraValues;
 
-    public Dijkstra(double[][] adjMatrix, int numVerts, int numEdges) {
-
+    public Graph_algo(double[][] adjMatrix, int numVerts, int numEdges) {
+        this.dijkstraValues = new double[numVerts];
         this.djMatrix = new double[numVerts][numVerts];
         this.numEdges = numEdges;
         this.numVerts = numVerts;
@@ -33,7 +35,7 @@ public class Dijkstra {
                 djMatrix[i][j] = adjMatrix[i][j];
             }
         }//end copy adjMatrix
-
+        resetdijkstraValues();
     }
 
     public double getDijkstra(int s) {
@@ -54,7 +56,7 @@ public class Dijkstra {
         distance[s] = 0;
         visited[s] = 1;
         count = 1;
-        while (count < numVerts-1 ) {
+        while (count < numVerts - 1) {
             minimumDistance = INFINITY;
             for (i = 0; i < numVerts; i++) {
                 if (distance[i] < minimumDistance && (visited[i] == 0)) {
@@ -85,4 +87,32 @@ public class Dijkstra {
         return max;
     }
 
+    private void resetdijkstraValues() {
+        for (int i = 0; i < dijkstraValues.length; i++) {
+            dijkstraValues[i] = getDijkstra(i);
+        }
+        //System.out.println("");
+        //System.out.println("dijkstra Values: \n"+ Arrays.toString(dijkstraValues));
+        //System.out.println("");
+    }
+
+    public double getDiameter() {
+        double max = 0;
+        for (int i = 0; i < dijkstraValues.length; i++) {
+            if (dijkstraValues[i] > max) {
+                max = dijkstraValues[i];
+            }
+        }
+        return max;
+    }
+
+    public double getRadius() {
+        double min = Double.POSITIVE_INFINITY;
+        for (int i = 0; i < dijkstraValues.length; i++) {
+            if (dijkstraValues[i] < min) {
+                min = dijkstraValues[i];
+            }
+        }
+        return min;
+    }
 }

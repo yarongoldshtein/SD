@@ -28,17 +28,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Graph {
 
     /**
      * class definitions
      */
-    public static void main(String[] args) {
-        Graph g = new Graph();
-        System.out.println("it's Worked");
-    }
-
     private static final String INF = "&";
     private static final double INFINITY = Double.POSITIVE_INFINITY;
 
@@ -51,8 +48,7 @@ public class Graph {
     private BufferedReader GraphStream;
     public double current_edge_weight;
     private int[] next;
-    private double[] dijkstraValues;
-    private Dijkstra d;
+    Graph_algo dijkstra;
 
     /**
      * default constructor included for completeness
@@ -90,13 +86,11 @@ public class Graph {
 
         inputGraph();
 
-       // initializes neighbor array
+        // initializes neighbor array
         next = new int[numVerts];
-        dijkstraValues = new double[numVerts];
-        d = new Dijkstra(adjMatrix, numVerts, numEdges);///// needs to be edited!!
+        dijkstra = new Graph_algo(adjMatrix, numVerts, numEdges);///// needs to be edited!!
 
         resetnext();
-        resetdijkstraValues();
 
     }
 
@@ -310,34 +304,4 @@ public class Graph {
         }
     }// end method resetnext()
 
-//---------------------------------------------------------------------------
-    private void resetdijkstraValues() {
-        for (int i = 0; i < dijkstraValues.length; i++) {
-            dijkstraValues[i] = d.getDijkstra(i);
-        }
-        //System.out.println("");
-        //System.out.println("dijkstra Values: \n"+ Arrays.toString(dijkstraValues));
-        //System.out.println("");
-    }
-
-    public double getDiameter() {
-        double max = 0;
-        for (int i = 0; i < dijkstraValues.length; i++) {
-            if(dijkstraValues[i]>max){
-                max=dijkstraValues[i];
-            }
-        }
-        return max;
-    }
-    
-    public double getRadius() {
-        double min = Double.POSITIVE_INFINITY;
-        for (int i = 0; i < dijkstraValues.length; i++) {
-            if(dijkstraValues[i]<min){
-                min=dijkstraValues[i];
-            }
-        }
-        return min;
-    }
-    
 }
