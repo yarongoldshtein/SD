@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +43,7 @@ public class Test {
 
             for (int i = 0; i < num_of_queries - 1; i++) {
                 line = execFile.readLine();
-                 st = new StringTokenizer(line);
+                st = new StringTokenizer(line,", ");
                 v1 = Integer.parseInt(st.nextToken());
                 v2 = Integer.parseInt(st.nextToken());
                 BL_Number = Integer.parseInt(st.nextToken());
@@ -51,7 +52,7 @@ public class Test {
                 for (int j = 0; j < BLArr.length; j++) {
                     BLArr[j] = Integer.parseInt(st.nextToken());
                 }
-                System.out.println(graph.dijkstra.getShortestPathWithBL(v1, v2, BLArr));
+                System.out.println(v1+" "+v2+" "+BL_Number+" "+Arrays.toString(BLArr)+ " " +graph.dijkstra.getShortestPathWithBL(v1, v2, BLArr));
             }
             graph.endRunFile();
             System.out.println("Graph: |V|="+graph.getvertex()+", |E|="+graph.getEdges()+", "+graph.dijkstra.isTriangle_inequality() +", Radius: "+graph.dijkstra.getRadius()+", Diameter: "+graph.dijkstra.getDiameter()+", runtime: "+graph.runTime()+" ms");

@@ -20,9 +20,15 @@ public class Main {
      */
     public static void main(String[] args) {
         try {
-            Graph g = new Graph("G0.txt");
+            Graph g1 = new Graph("G0.txt");
+            Graph g2 = new Graph("G101.txt");
+
             //g.display();
-            Test t = new Test("test1.txt",g);
+//            System.out.println("test 1");
+//            Test t1 = new Test("test1.txt",g1);
+            System.out.println("test 2");
+            Test t2 = new Test("test101.txt",g2);
+
 //            System.out.println(g.dijkstra.getRadius());
 //            System.out.println(g.dijkstra.getDiameter());
 //            System.out.println(g.dijkstra.getShortestPath(0, 1));
