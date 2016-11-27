@@ -10,17 +10,6 @@ package a;
  *
  * @author yaron
  *
- * //******************************************************************** //
- * Graph.java // Graph class which has data and methods to work with a Graph. //
- * Note: The Graph class takes the filename as an input parameter. //	File
- * should exist in same directory as program. // File format: The first line of
- * the file is an integer n (number of vertices). // Then there will be n lines
- * each with n integers on each line // with a space separating each integer
- * (each integer is edge weight). // Make sure no spaces follow last character
- * on each line // Make sure no blank lines or extra CR's follow last row //
- * Edge weights cannot exceed 900000000 // // to run this program: > Call the
- * class from another program. //	Example: Graph a = new Graph("Graph.txt")
- * //--------------------------------------------------------------------
  */
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -185,23 +174,7 @@ public class Graph {
         }
     }
 
-//------------------------------------------------------------------------
-//    public void insertVertex(int a, int x, int y) // insert a vertex
-//    {
-//        if (x == y) // if adjMatrix[i][i]
-//        {
-//            if (a != 0) // if value if not zero, display error and exit
-//            {
-//                System.out.println("Cannot initialize Graph, adjMatrix[i][i] must be zero! Exiting...");
-//                System.exit(0);
-//            }// end if
-//        }// end outer if
-//
-//        adjMatrix[x][y] = a;		// insert vertex into matrix
-//
-//    }// end method insertVertex()
 
-//------------------------------------------------------------------------
     /**
      * prints adjacency matrix to screen
      */
@@ -231,70 +204,7 @@ public class Graph {
         return numVerts;
     }
 
-//    /**
-//     * accessor for edge weight between two vertices
-//     *
-//     * @param row the vertex from which edge extends
-//     * @param col the vertex to which edge extends
-//     * @return the edge weight between the two vertices
-//     */
-//    public double edgeLength(int row, int col) {
-//        return adjMatrix[row][col];
-//    }
 
-//    /**
-//     * accessor to get one row of adjacency matrix
-//     *
-//     * @param row the row number requested
-//     * @return the row requested from the adjacency matrix
-//     */
-//    public double[] getRow(int row) {
-//        double[] oneRow = new double[numVerts];
-//
-//        for (int col = 0; col < numVerts; col++) {
-//            oneRow[col] = adjMatrix[row][col];
-//        }
-//
-//        return oneRow;
-//    }
-
-//---------------------------------------------------- 
-//    /**
-//     * mutator for edge weight between two vertices
-//     *
-//     * @param row the vertex from which edge extends
-//     * @param col the vertex to which edge extends
-//     * @param edgeWeight the new weight for the edge
-//     */
-//    public void setWeight(int row, int col, int edgeWeight) {
-//        adjMatrix[row][col] = edgeWeight;
-//    }
-
-//---------------------------------------------------
-//    public int nextneighbor(int v) {
-//        next[v] = next[v] + 1;
-//
-//        if (next[v] < numVerts) {
-//            while (adjMatrix[v][next[v]] == 0 && next[v] < numVerts) {
-//                next[v] = next[v] + 1;
-//
-//                if (next[v] == numVerts) {
-//                    break;
-//                }
-//            }
-//        }
-//
-//        if (next[v] >= numVerts) {
-//            next[v] = -1;
-//            current_edge_weight = -1;
-//        } else {
-//            current_edge_weight = adjMatrix[v][next[v]];
-//        }
-//
-//        return next[v];
-//    }
-
-//---------------------------------------------------------------------------
     public void resetnext() {
         for (int i = 0; i < numVerts; i++) {
             for (int j = 0; j < numVerts; j++) {

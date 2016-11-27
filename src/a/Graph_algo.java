@@ -85,8 +85,6 @@ public class Graph_algo {
                 index = i;
             }
         }
-        //System.out.println("dijkstra round: \n"+Arrays.toString(distance));
-        //System.out.println("Distance to " + index + " from source " + s + " is " + max);
         return max;
     }
 
@@ -94,9 +92,6 @@ public class Graph_algo {
         for (int i = 0; i < dijkstraValues.length; i++) {
             dijkstraValues[i] = getDijkstra(i);
         }
-        //System.out.println("");
-        //System.out.println("dijkstra Values: \n"+ Arrays.toString(dijkstraValues));
-        //System.out.println("");
     }
 
     public double getDiameter() {
