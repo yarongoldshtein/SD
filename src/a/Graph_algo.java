@@ -157,12 +157,11 @@ public class Graph_algo {
         }
         return distance[end];
     }
-    
-       public String getShortestPathString(int start, int end) {
+
+    public String getShortestPathString(int start, int end) {
         if (end > numVerts || end < 0 || start > numVerts || start < 0) {
             return "Error: one or both of the verts are not exist";
         }
-        String ans =""+start; 
         double distance[] = new double[numVerts];
         int previous[] = new int[numVerts];
         int visited[] = new int[numVerts];
@@ -185,21 +184,74 @@ public class Graph_algo {
                     nextNode = i;
                 }
             }
-           String temp =","+nextNode;
             visited[nextNode] = 1;
             for (i = 0; i < numVerts; i++) {
                 if (visited[i] == 0) {
                     if (minimumDistance + djMatrix[nextNode][i] < distance[i]) {
                         distance[i] = minimumDistance + djMatrix[nextNode][i];
-                        temp=","+i;
                         previous[i] = nextNode;
                     }
                 }
             }
-            ans+=temp;
             count++;
+        }
+        String ans = "" + end;
+        int path = end;
+        while (path != start) {
+            ans = previous[path] + "," + ans;
+            path = previous[path];
         }
         return ans;
     }
-}
 
+    public double getShortestPathWithBL(int start, int end, int[] BL) {
+        if (end > numVerts || end < 0 || start > numVerts || start < 0) {
+            return -1;
+        }
+        double distance[] = new double[numVerts];
+        int previous[] = new int[numVerts];
+        int visited[] = new int[numVerts];
+        int count, nextNode = start, i, j;
+        double minimumDistance;
+
+        for (i = 0; i < numVerts; i++) {
+            distance[i] = djMatrix[start][i];
+            previous[i] = start;
+            if(arrContain(BL, i)){
+                visited[i] = 1;
+            }else{
+            visited[i] = 0;
+            }
+        }
+        distance[start] = 0;
+        visited[start] = 1;
+        count = 1;
+        while (count < numVerts - 1) {
+            minimumDistance = INFINITY;
+            for (i = 0; i < numVerts; i++) {
+                if (distance[i] < minimumDistance && (visited[i] == 0)) {
+                    minimumDistance = distance[i];
+                    nextNode = i;
+                }
+            }
+            visited[nextNode] = 1;
+            for (i = 0; i < numVerts; i++) {
+                if (visited[i] == 0) {
+                    if (minimumDistance + djMatrix[nextNode][i] < distance[i]) {
+                        distance[i] = minimumDistance + djMatrix[nextNode][i];
+                        previous[i] = nextNode;
+                    }
+                }
+            }
+            count++;
+        }
+        return distance[end];
+    }
+
+    public boolean arrContain(int[] arr, int i) {
+        for (int j = 0; j < arr.length; j++) {
+            if(arr[j]==i) return true;
+        }
+        return false;
+    }
+}
