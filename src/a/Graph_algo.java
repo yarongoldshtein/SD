@@ -12,7 +12,6 @@ package a;
 import java.util.*;
 import java.io.*;
 
-
 public class Graph_algo {
 
     /*
@@ -23,6 +22,7 @@ public class Graph_algo {
     private int numVerts, numEdges;
     private double INFINITY = Double.POSITIVE_INFINITY;
     private double[] dijkstraValues;
+    private boolean triangle_inequality = true;
 
     public Graph_algo(double[][] adjMatrix, int numVerts, int numEdges) {
         this.dijkstraValues = new double[numVerts];
@@ -118,8 +118,6 @@ public class Graph_algo {
         }
         return min;
     }
-
-
 
     public double getShortestPath(int start, int end) {
         if (end > numVerts || end < 0 || start > numVerts || start < 0) {
@@ -220,10 +218,10 @@ public class Graph_algo {
         for (i = 0; i < numVerts; i++) {
             distance[i] = djMatrix[start][i];
             previous[i] = start;
-            if(arrContain(BL, i)){
+            if (arrContain(BL, i)) {
                 visited[i] = 1;
-            }else{
-            visited[i] = 0;
+            } else {
+                visited[i] = 0;
             }
         }
         distance[start] = 0;
@@ -243,6 +241,7 @@ public class Graph_algo {
                     if (minimumDistance + djMatrix[nextNode][i] < distance[i]) {
                         distance[i] = minimumDistance + djMatrix[nextNode][i];
                         previous[i] = nextNode;
+                        triangle_inequality = false;
                     }
                 }
             }
@@ -253,8 +252,19 @@ public class Graph_algo {
 
     public boolean arrContain(int[] arr, int i) {
         for (int j = 0; j < arr.length; j++) {
-            if(arr[j]==i) return true;
+            if (arr[j] == i) {
+                return true;
+            }
         }
         return false;
     }
+
+    public String isTriangle_inequality() {
+        if (triangle_inequality) {
+            return "TIE";
+        } else {
+            return "!TIE";
+        }
+    }
+
 }

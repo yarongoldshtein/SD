@@ -186,20 +186,20 @@ public class Graph {
     }
 
 //------------------------------------------------------------------------
-    public void insertVertex(int a, int x, int y) // insert a vertex
-    {
-        if (x == y) // if adjMatrix[i][i]
-        {
-            if (a != 0) // if value if not zero, display error and exit
-            {
-                System.out.println("Cannot initialize Graph, adjMatrix[i][i] must be zero! Exiting...");
-                System.exit(0);
-            }// end if
-        }// end outer if
-
-        adjMatrix[x][y] = a;		// insert vertex into matrix
-
-    }// end method insertVertex()
+//    public void insertVertex(int a, int x, int y) // insert a vertex
+//    {
+//        if (x == y) // if adjMatrix[i][i]
+//        {
+//            if (a != 0) // if value if not zero, display error and exit
+//            {
+//                System.out.println("Cannot initialize Graph, adjMatrix[i][i] must be zero! Exiting...");
+//                System.exit(0);
+//            }// end if
+//        }// end outer if
+//
+//        adjMatrix[x][y] = a;		// insert vertex into matrix
+//
+//    }// end method insertVertex()
 
 //------------------------------------------------------------------------
     /**
@@ -227,72 +227,72 @@ public class Graph {
      *
      * @return number of vertices in Graph
      */
-    public int vertices() {
+    public int getvertex() {
         return numVerts;
     }
 
-    /**
-     * accessor for edge weight between two vertices
-     *
-     * @param row the vertex from which edge extends
-     * @param col the vertex to which edge extends
-     * @return the edge weight between the two vertices
-     */
-    public double edgeLength(int row, int col) {
-        return adjMatrix[row][col];
-    }
+//    /**
+//     * accessor for edge weight between two vertices
+//     *
+//     * @param row the vertex from which edge extends
+//     * @param col the vertex to which edge extends
+//     * @return the edge weight between the two vertices
+//     */
+//    public double edgeLength(int row, int col) {
+//        return adjMatrix[row][col];
+//    }
 
-    /**
-     * accessor to get one row of adjacency matrix
-     *
-     * @param row the row number requested
-     * @return the row requested from the adjacency matrix
-     */
-    public double[] getRow(int row) {
-        double[] oneRow = new double[numVerts];
-
-        for (int col = 0; col < numVerts; col++) {
-            oneRow[col] = adjMatrix[row][col];
-        }
-
-        return oneRow;
-    }
+//    /**
+//     * accessor to get one row of adjacency matrix
+//     *
+//     * @param row the row number requested
+//     * @return the row requested from the adjacency matrix
+//     */
+//    public double[] getRow(int row) {
+//        double[] oneRow = new double[numVerts];
+//
+//        for (int col = 0; col < numVerts; col++) {
+//            oneRow[col] = adjMatrix[row][col];
+//        }
+//
+//        return oneRow;
+//    }
 
 //---------------------------------------------------- 
-    /**
-     * mutator for edge weight between two vertices
-     *
-     * @param row the vertex from which edge extends
-     * @param col the vertex to which edge extends
-     * @param edgeWeight the new weight for the edge
-     */
-    public void setWeight(int row, int col, int edgeWeight) {
-        adjMatrix[row][col] = edgeWeight;
-    }
+//    /**
+//     * mutator for edge weight between two vertices
+//     *
+//     * @param row the vertex from which edge extends
+//     * @param col the vertex to which edge extends
+//     * @param edgeWeight the new weight for the edge
+//     */
+//    public void setWeight(int row, int col, int edgeWeight) {
+//        adjMatrix[row][col] = edgeWeight;
+//    }
 
 //---------------------------------------------------
-    public int nextneighbor(int v) {
-        next[v] = next[v] + 1;
-
-        if (next[v] < numVerts) {
-            while (adjMatrix[v][next[v]] == 0 && next[v] < numVerts) {
-                next[v] = next[v] + 1;
-
-                if (next[v] == numVerts) {
-                    break;
-                }
-            }
-        }
-
-        if (next[v] >= numVerts) {
-            next[v] = -1;
-            current_edge_weight = -1;
-        } else {
-            current_edge_weight = adjMatrix[v][next[v]];
-        }
-
-        return next[v];
-    }
+//    public int nextneighbor(int v) {
+//        next[v] = next[v] + 1;
+//
+//        if (next[v] < numVerts) {
+//            while (adjMatrix[v][next[v]] == 0 && next[v] < numVerts) {
+//                next[v] = next[v] + 1;
+//
+//                if (next[v] == numVerts) {
+//                    break;
+//                }
+//            }
+//        }
+//
+//        if (next[v] >= numVerts) {
+//            next[v] = -1;
+//            current_edge_weight = -1;
+//        } else {
+//            current_edge_weight = adjMatrix[v][next[v]];
+//        }
+//
+//        return next[v];
+//    }
 
 //---------------------------------------------------------------------------
     public void resetnext() {
@@ -317,4 +317,9 @@ public class Graph {
     public long runTime() {
         return endTime - startTime;
     }
+
+    public int getEdges() {
+        return numEdges;
+    }
+    
 }

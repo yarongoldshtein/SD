@@ -21,15 +21,16 @@ public class Main {
     public static void main(String[] args) {
         try {
             Graph g = new Graph("G0.txt");
-            g.display();
-            System.out.println(g.dijkstra.getRadius());
-            System.out.println(g.dijkstra.getDiameter());
-            System.out.println(g.dijkstra.getShortestPath(0, 1));
-            System.out.println(g.dijkstra.getShortestPathString(0, 2));
-            int[] arr = {4,5,3};
-            System.out.println(g.dijkstra.getShortestPathWithBL(0, 2,arr));
-            g.endRunFile();
-            System.out.println("runTime = "+g.runTime());
+            //g.display();
+            Test t = new Test("test1.txt",g);
+//            System.out.println(g.dijkstra.getRadius());
+//            System.out.println(g.dijkstra.getDiameter());
+//            System.out.println(g.dijkstra.getShortestPath(0, 1));
+//            System.out.println(g.dijkstra.getShortestPathString(0, 2));
+//            int[] arr = {4,5,3};
+//            System.out.println(g.dijkstra.getShortestPathWithBL(0, 2,arr));
+//            g.endRunFile();
+//            System.out.println("runTime = "+g.runTime());
         } catch (IOException ex) {
             Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
         }
