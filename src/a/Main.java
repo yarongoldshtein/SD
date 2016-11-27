@@ -24,7 +24,8 @@ public class Main {
             g.display();
             System.out.println(g.dijkstra.getRadius());
             System.out.println(g.dijkstra.getDiameter());
-
+            g.endRunFile();
+            System.out.println("runTime = "+g.runTime());
         } catch (IOException ex) {
             Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -49,6 +49,8 @@ public class Graph {
     public double current_edge_weight;
     private int[] next;
     Graph_algo dijkstra;
+    private long startTime;
+    private long endTime;
 
     /**
      * default constructor included for completeness
@@ -81,7 +83,7 @@ public class Graph {
      * @throws IOException if file is empty or cannot be opened
      */
     public Graph(String filename) throws IOException {
-
+        startRunFile();
         GraphStream = fileIn(filename); //BufferReader
 
         inputGraph();
@@ -304,4 +306,15 @@ public class Graph {
         }
     }// end method resetnext()
 
+    public void startRunFile() {
+        startTime = System.currentTimeMillis();
+    }
+
+    public void endRunFile() {
+        endTime = System.currentTimeMillis();
+    }
+
+    public long runTime() {
+        return endTime - startTime;
+    }
 }
