@@ -22,6 +22,7 @@ public class Test {
 
     private String filename;
     private Graph graph;
+    
     public Test(String name_of_file,Graph g) {
         filename = name_of_file;
         graph = g;
@@ -64,7 +65,6 @@ public class Test {
 
     private BufferedReader fileIn(String file) {
         BufferedReader br = null;
-
         try {
             br = new BufferedReader(new FileReader(file));
         } catch (FileNotFoundException fnf) {

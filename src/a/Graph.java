@@ -74,14 +74,12 @@ public class Graph {
     public Graph(String filename) throws IOException {
         startRunFile();
         GraphStream = fileIn(filename); //BufferReader
-
         inputGraph();
-
         // initializes neighbor array
         next = new int[numVerts];
         dijkstra = new Graph_algo(adjMatrix, numVerts, numEdges);///// needs to be edited!!
 
-        resetnext();
+       // resetnext();
 
     }
 

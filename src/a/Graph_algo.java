@@ -71,6 +71,9 @@ public class Graph_algo {
             for (i = 0; i < numVerts; i++) {
                 if (visited[i] == 0) {
                     if (minimumDistance + djMatrix[nextNode][i] < distance[i]) {
+                         if ((djMatrix[s][i] < INFINITY)&&(djMatrix[nextNode][i] < INFINITY)&&(djMatrix[nextNode][s] < INFINITY)) {
+                            triangle_inequality = false;
+                        }
                         distance[i] = minimumDistance + djMatrix[nextNode][i];
                         previous[i] = nextNode;
                     }
@@ -236,7 +239,6 @@ public class Graph_algo {
                     if (minimumDistance + djMatrix[nextNode][i] < distance[i]) {
                         distance[i] = minimumDistance + djMatrix[nextNode][i];
                         previous[i] = nextNode;
-                        triangle_inequality = false;
                     }
                 }
             }
@@ -261,5 +263,4 @@ public class Graph_algo {
             return "!TIE";
         }
     }
-
 }
