@@ -18,7 +18,6 @@ public class Graph_algo {
      Graph_algo's Shortest Path Algorithm
      The following program gives the shortest path from the source to all other nodes
      */
-
     private double[][] djMatrix;
     private int numVerts, numEdges;
     private double INFINITY = Double.POSITIVE_INFINITY;
@@ -42,6 +41,9 @@ public class Graph_algo {
         /*shortestPathFinder method needs to static since non static method cannot 
          be referenced from a static method*/
 
+        if (s > numVerts || s < 0) {
+            return -1;
+        }
         double distance[] = new double[numVerts];
         int previous[] = new int[numVerts];
         int visited[] = new int[numVerts];
@@ -115,4 +117,89 @@ public class Graph_algo {
         }
         return min;
     }
+
+    public double getShortestPath(int start, int end) {
+        if (end > numVerts || end < 0 || start > numVerts || start < 0) {
+            return -1;
+        }
+        double distance[] = new double[numVerts];
+        int previous[] = new int[numVerts];
+        int visited[] = new int[numVerts];
+        int count, nextNode = start, i, j;
+        double minimumDistance;
+
+        for (i = 0; i < numVerts; i++) {
+            distance[i] = djMatrix[start][i];
+            previous[i] = start;
+            visited[i] = 0;
+        }
+        distance[start] = 0;
+        visited[start] = 1;
+        count = 1;
+        while (count < numVerts - 1) {
+            minimumDistance = INFINITY;
+            for (i = 0; i < numVerts; i++) {
+                if (distance[i] < minimumDistance && (visited[i] == 0)) {
+                    minimumDistance = distance[i];
+                    nextNode = i;
+                }
+            }
+            visited[nextNode] = 1;
+            for (i = 0; i < numVerts; i++) {
+                if (visited[i] == 0) {
+                    if (minimumDistance + djMatrix[nextNode][i] < distance[i]) {
+                        distance[i] = minimumDistance + djMatrix[nextNode][i];
+                        previous[i] = nextNode;
+                    }
+                }
+            }
+            count++;
+        }
+        return distance[end];
+    }
+    
+       public String getShortestPathString(int start, int end) {
+        if (end > numVerts || end < 0 || start > numVerts || start < 0) {
+            return "Error: one or both of the verts are not exist";
+        }
+        String ans =""+start; 
+        double distance[] = new double[numVerts];
+        int previous[] = new int[numVerts];
+        int visited[] = new int[numVerts];
+        int count, nextNode = start, i, j;
+        double minimumDistance;
+
+        for (i = 0; i < numVerts; i++) {
+            distance[i] = djMatrix[start][i];
+            previous[i] = start;
+            visited[i] = 0;
+        }
+        distance[start] = 0;
+        visited[start] = 1;
+        count = 1;
+        while (count < numVerts - 1) {
+            minimumDistance = INFINITY;
+            for (i = 0; i < numVerts; i++) {
+                if (distance[i] < minimumDistance && (visited[i] == 0)) {
+                    minimumDistance = distance[i];
+                    nextNode = i;
+                }
+            }
+           String temp =","+nextNode;
+            visited[nextNode] = 1;
+            for (i = 0; i < numVerts; i++) {
+                if (visited[i] == 0) {
+                    if (minimumDistance + djMatrix[nextNode][i] < distance[i]) {
+                        distance[i] = minimumDistance + djMatrix[nextNode][i];
+                        temp=","+i;
+                        previous[i] = nextNode;
+                    }
+                }
+            }
+            ans+=temp;
+            count++;
+        }
+        return ans;
+    }
 }
+

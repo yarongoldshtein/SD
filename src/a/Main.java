@@ -24,7 +24,9 @@ public class Main {
             g.display();
             System.out.println(g.dijkstra.getRadius());
             System.out.println(g.dijkstra.getDiameter());
-
+            System.out.println(g.dijkstra.getShortestPath(0, 1));
+            String a = g.dijkstra.getShortestPathString(0, 1);
+            System.out.println(a);
         } catch (IOException ex) {
             Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
         }
