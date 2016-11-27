@@ -24,13 +24,12 @@ public class Main {
             g.display();
             System.out.println(g.dijkstra.getRadius());
             System.out.println(g.dijkstra.getDiameter());
-            g.endRunFile();
-            System.out.println("runTime = "+g.runTime());
-
             System.out.println(g.dijkstra.getShortestPath(0, 1));
             System.out.println(g.dijkstra.getShortestPathString(0, 2));
-            int[] arr = {4};
-            System.out.println(g.dijkstra.getShortestPathWithBL(0, 1,arr));
+            int[] arr = {4,5,3};
+            System.out.println(g.dijkstra.getShortestPathWithBL(0, 2,arr));
+            g.endRunFile();
+            System.out.println("runTime = "+g.runTime());
         } catch (IOException ex) {
             Logger.getLogger(Graph.class.getName()).log(Level.SEVERE, null, ex);
         }
